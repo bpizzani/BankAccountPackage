@@ -1,71 +1,45 @@
 # BankAccountPackage
 
 ## About The Project
-This project builds a supervised model to provide real-time labeled comments. After preprocessing the comments received from customers on different Hospitals,the model aims to predicts the labels of the comments based on the principle of TFIDF using a supervised model based on vector: LinearSVC.
+This project builds a package that creates a bank database of clients and balances. It allows to add new clients and respective balances, add balance, calculate taxes and interests. Also some get some interesting data such a balances Linear Regression by age.
+
 Built With
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-•	AWS SageMaker
 •	Python
 
 ## Getting Started
-You will need access to Amazon Web Services Notebook instance and clone this project there. Open the terminal in the SakeMaker Notebook and type
+Package is already in Pypy so you only need to pip install it as:
 ```bash
-cd SageMaker
-git clone https://github.com/bpizzani/Comment_Advine.git
+pip install bank_account_pizzani
 ```
 
 ## Prerequisites
-To build the model and preprocess the data you will need the following knowledge:
-
-•	AmazonWebServices – SageMaker
-
-•	API and Lambda functions
-
-•	Machine Learning concepts
-
-•	Sklearn
-
-•	NLTK
-
-•	Spacy
-
-## Installation
-1.	Clone the repo
-```bash 
-git clone https://github.com/bizzani/Comment_Advine.git
-```
-2.	Install pip packages:
-
-•	Spacy
-
-•	NLTK
-
-•	Numpy
+To build the model and preprocess the data you will need the following knowledge and having Pandas insatlled:
 
 •	Pandas
 
-•	Sklearn
+## Installation
+1.	Pip install
+```bash 
+pip install bank_account_pizzani
+```
+2.	Import the function:
 
 ```bash
-pip install <packages>
-!python -m spacy download es
+from bank_account_pizzani import Exporter,Account
 ```
   
 ## Usage
-Once you have clone the project into ASW Sagemaker Notebook you can access the .ipynb file and run the preprocessing code and build the sklearn LinearSVC estimator and carry on the deployment. 
+Once imported you either add one single client using the fucntion .add() or load a csv of clients where the first colum is: the name, second: age, third: balance.
 
-Once the predictor (estimator.deploy()) has been created we create a Lambda Function and invoke the endpoint setting the endpoint name to the predictor endpoint name (predictor.endpoint).
+Then yo ucan .add_blaance() to any client_id, and set a client or account type by executing set_client_category or set_account_category.
 
-Lambda function code is also included in this project.
+Based on account and client category an interest or charge can be applied to the account using the methods .charge() and .interest()
 
-Finally, we create an API linked to our lambda function in AWS API, and we will get the API url that we would need to copy and paste into the “Index.html” file in the where: action= “link”
-
-The lambda functions will take a string and convert it to a list of a single string since the model would accept an array in order to make predictions.
-To make predictions we access “Index.html” and just type down our comment.
+Finally you can export the dataframe using the method .create_dataframe() and display a Linear Regression graph on the variable Age-Balance using the mothod .LM()
 
 ## License
 Distributed under the MIT License. See LICENSE for more information.
 
 ## Contact
 Your Name – bpizzani92@gmail.com
-Project Link: https://github.com/bpizzani/Comment_Adiviner
+Project Link: https://github.com/bpizzani/BankAccountPackage.git
